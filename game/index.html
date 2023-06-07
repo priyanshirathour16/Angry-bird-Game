@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0%;
+            box-sizing: border-box;
+            font-family: 'Item' , cursive;
+        }
+        body{
+            background-color: rgb(30, 51, 56);
+        }
+        .rr{
+            color:white;
+        }
+        div{
+            float:left;
+        }
+        .r1{
+            padding-top:10px;
+            padding-left: 2em;
+            width:100%;
+            text-align:right;
+            font-size:60px;
+            color:white;
+
+        }
+        .r2{
+            margin-top:5em;
+            width:100%;
+            text-align: center;
+            padding-left:300px;
+        }
+        .c1{
+            font-size:80px;
+            width:100px;
+            background-color: #09C372;
+            margin-left:160px;
+            border-radius: 70px;
+        }
+        .r3{
+            width:100%;
+            text-align: center;
+            font-size: 30px;
+            margin-top:40px;
+            color:white;
+        }
+        .b1{
+            background-color: red;
+            color:white;
+            padding:10px;
+            font-size: 30px;
+            font-weight: bold;
+            width:100px;
+            border:none;
+            margin-top:10px;
+            border-radius: 10px;
+        }
+        .t1{
+            height: 40px;
+            width:300px;
+            font-size: 40px;
+           
+            background-color: rgb(240, 240, 204);
+        }
+        .r0{
+            margin-left: 36%;
+            text-align: center;
+            font-size: 3em;
+            color:white;
+        }
+        .r4{
+           position: relative;
+           
+        }
+        .rr4{
+            position: absolute;
+            top:200px;
+           right:1100px;
+           font-size: 200px;
+        }
+        .rr3{
+            
+            position : absolute;
+            top :220px;
+            right:200px;
+            font-size: 200px;
+        }
+        .rr31{
+            transform: rotate(260deg);
+        }
+        /* .rr31{
+            transform: rotate(360deg);
+        }
+        */
+        @media (max-width:768){
+            .div{
+                background-color: aqua;
+            }
+        }
+       
+    </style>
+    <script type="text/javascript">
+        var tme=20;
+        var n1=0,n2=0,n3=0;
+        var p1,p2;
+        var audio = new Audio("crackers.mp3");
+        var audio1 = new Audio("Oh.mp3");
+
+        function starttime()
+        {
+            tme--;
+            document.getElementById("divtime").innerHTML="Time Left:"+tme;
+            if(tme==0)
+            {
+                clearInterval(p1);
+                clearInterval(p2);
+                audio.play();
+                // alert("You are looser");
+                document.getElementById('rr').innerHTML='You are Looser &#128532';
+                // document.getElementById('cel').innerHTML='&#128078';
+                // document.getElementById('cell').innerHTML='&#128078';
+                document.getElementById('cel').innerHTML='&#127881';
+                document.getElementById('cell').innerHTML='&#127881';
+                document.body.style.backgroundImage = "url('cel.gif')";
+            }
+        }
+        function rotatenumber()
+        {
+            n1=parseInt(Math.random()*10);
+            n2=parseInt(Math.random()*10);
+            n3=parseInt(Math.random()*10);
+            document.getElementById("c1").innerHTML=n1;
+            document.getElementById("c2").innerHTML=n2;
+            document.getElementById("c3").innerHTML=n3;
+            var no=document.getElementById("t1").value;
+            var no1=""+n1 + n2 + n3;
+            if(no==no1)
+            {
+                clearInterval(p1);
+                clearInterval(p2);
+                audio.play();
+                document.getElementById('rr').innerHTML='You are winner &#128512 &#127881';
+                // document.getElementById('cel').innerHTML='&#127881';
+                // document.getElementById('cell').innerHTML='&#127881';
+                // document.body.style.backgroundImage = "url('cel.gif')";
+                
+
+                
+            }
+        }
+        
+        function start()
+        {
+            var a=document.getElementById("t1").value;
+            if(a=="")
+            {
+                alert("Please enter lucky number");
+
+            }
+            else{
+                p1=setInterval("starttime()",1000);
+                p2=setInterval("rotatenumber()",500);
+                
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="r1" id="divtime">Time Left:20 Sec</div>
+    <div class="r0" id ="rr"></div>
+    <div class="r2  row">
+        <div id="c1" class="c1">0</div>
+        <div id="c2" class="c1">0</div>
+        <div id="c3" class="c1">0</div>
+    </div>
+    <div class="r4 row">
+        <div class="rr4" id = "cel"> </div>
+        <div class="rr31 rr3" id = "cell"></div>
+        <div class="rr32 rr3" id = "cell"></div>
+
+    </div>
+    <div class="r3 row">
+        Enter Lucky No<br/>
+        <input type="text" class="t1" id="t1" /><br/>
+        <button onclick="start()" class="b1" id = "b1">Start</button>
+    </div>
+</body>
+</html>
